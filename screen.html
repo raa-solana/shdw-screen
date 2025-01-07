@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bouncing Logo Screensaver</title>
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+      background-color: black;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    #logo {
+      position: absolute;
+      width: 100px;
+      height: 100px;
+      background-image: url('shdwDrive_logo.png'); /* ロゴ画像を設定 */
+      background-size: cover;
+    }
+  </style>
+</head>
+<body>
+  <div id="logo"></div>
+  <script>
+    // 初期設定
+    const logo = document.getElementById('logo');
+    const screenWidth = window.innerWidth;
+    const screenHeight = window.innerHeight;
+
+    let x = Math.random() * screenWidth; // 初期X座標
+    let y = Math.random() * screenHeight; // 初期Y座標
+    let dx = 2; // X方向の速度
+    let dy = 2; // Y方向の速度
+    const logoWidth = 100; // ロゴの幅
+    const logoHeight = 100; // ロゴの高さ
+
+    // アニメーションループ
+    function animate() {
+      // ロゴを移動
+      x += dx;
+      y += dy;
+
+      // 壁に当たったら跳ね返る
+      if (x <= 0 || x + logoWidth >= screenWidth) {
+        dx = -dx;
+      }
+      if (y <= 0 || y + logoHeight >= screenHeight) {
+        dy = -dy;
+      }
+
+      // ロゴの位置を更新
+      logo.style.left = `${x}px`;
+      logo.style.top = `${y}px`;
+
+      // 次のフレームをリクエスト
+      requestAnimationFrame(animate);
+    }
+
+    // ウィンドウリサイズ時に画面サイズを更新
+    window.addEventListener('resize', () => {
+      screenWidth = window.innerWidth;
+      screenHeight = window.innerHeight;
+    });
+
+    // アニメーション開始
+    animate();
+  </script>
+</body>
+</html>
