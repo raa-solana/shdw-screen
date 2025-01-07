@@ -1,7 +1,7 @@
 {
-  "name": "My Screensaver",
+  "name": "shdw Screensaver",
   "short_name": "Screensaver",
-  "start_url": "./screen.html",
+  "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#000000",
   "theme_color": "#000000",
